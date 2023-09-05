@@ -4,12 +4,14 @@ import * as pizzasAPI from "../../utilities/pizzas-api";
 import * as ordersAPI from "../../utilities/orders-api";
 import CategoryList from "../../components/CategoryList/CategoryList";
 import PizzaList from "../../components/PizzaList/PizzaList";
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Home({ user }) {
   const [pizzaItems, setPizzaItems] = useState([]);
   const [cart, setCart] = useState(null);
   const categoriesRef = useRef([]);
   const [activeCat, setActiveCat] = useState("");
+  const navigate = useNavigate();
 
   useEffect(function () {
     async function getItems() {
@@ -31,6 +33,7 @@ export default function Home({ user }) {
 
     // 2. Update the cart state with the updated cart received from the server
     setCart(updatedCart);
+    navigate("/cart");
   }
 
   async function handleChangeQty(itemId, newQty, rate) {
