@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { Routes, Route ,Navigate} from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 import './App.css';
-import AuthPage from '../AuthPage/AuthPage';
-import NewOrderPage from '../NewOrderPage/NewOrderPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 
 import NavBar from '../../components/NavBar/NavBar';
@@ -24,20 +22,24 @@ export default function App() {
   return (
   <>
       <NavBar user={user} setUser={setUser} />
-        
+      { user ?
             <Routes>
-              
               {/* Route components in here */}
-              <Route path="/orders/new" element={<NewOrderPage />} />
               <Route path="/orders" element={<OrderHistoryPage />} />
-              <Route path="/" element={<Home/>} />
+              <Route path="/" element={<Home user={user} />} />
               <Route path="/cart" element={<Cart/>} />
+              <Route path="/*" element={<Navigate to="/" />} />            
+              </Routes>
+            :
+            <Routes>
+              {/* Route components in here */}
+              <Route path="/" element={<Home user={user}/>} />
               <Route path="/login" element={<LoginForm setUser={setUser}/>} />
               <Route path="/createuser" element={<SignUpForm setUser={setUser} />} />
-              <Route path="/*" element={<Navigate to="/" />} />
-            
+              </Routes>            
+            }
          
-            </Routes>
+            
            
       
       <Footer/>

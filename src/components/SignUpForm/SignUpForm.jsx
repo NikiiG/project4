@@ -11,7 +11,6 @@ export default class SignUpForm extends Component {
     confirm: '',
     error: ''
   };
-  
 
   handleChange = (evt) => {
   
@@ -31,8 +30,7 @@ export default class SignUpForm extends Component {
       // method will resolve to the user object included
       // in the payload of the JSON Web Token (JWT)
       const user = await signUp(formData);
-      this.props.setUser(user);
-   
+      this.props.setUser(user);      
     } catch {
       // An error occurred
       // Probably due to a duplicate email
@@ -45,7 +43,7 @@ export default class SignUpForm extends Component {
     return (
       <div className='register'style={{ backgroundImage: 'url("https://images.pexels.com/photos/13985154/pexels-photo-13985154.jpeg?auto=compress&cs=tinysrgb&w=800")', backgroundSize: 'cover',height: '100vh'}}>
         <div>
-          <form className='row justify-content-center mt-5'autoComplete="off" onSubmit={this.handleSubmit}>
+          <form className='row justify-content-center mt-5' autoComplete="off" onSubmit={this.handleSubmit}>
           <div className="col-md-5 mt-5 text-left shadow-lg p-3 mb-5 bg-white rounded">
             <h2 className="m-2"style={{fontsize:"35px"}}>Sign Up</h2>
            
@@ -53,8 +51,10 @@ export default class SignUpForm extends Component {
             <input type="email" className="form-control" name="email" value={this.state.email} onChange={this.handleChange} required placeholder="E-mail"/>
             <input type="password" className="form-control" name="password" value={this.state.password} onChange={this.handleChange} required placeholder="Password"/>
             <input type="password"className="form-control" name="confirm" value={this.state.confirm} onChange={this.handleChange} required placeholder="Confirm Password"/>
-            <button type="submit" className="btn mt-3 mb-3"disabled={disable}>SIGN UP</button>
+            <a href="/" className="btn mt-3 mb-3" onClick={this.handleSubmit}>SIGN UP</a>
             <Link to="/login" className=' m-4' style={{color:'black'}}>Click Here To Login</Link>
+            
+
             </div>
         
           

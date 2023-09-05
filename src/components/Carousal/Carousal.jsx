@@ -2,7 +2,7 @@ import React from "react";
 export default function Carousal() {
     return (
         <div>
-            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" style={{objectFit:"contain !important"}}>
+            <div id="carouselExampleFade" className="carousel slide carousel-fade" data-bs-ride="carousel" style={{objectFit:"contain !important"}}>
   <div className="carousel-inner" id='carousel'>
     <div className=" carousel-caption" style={{zIndex:"9"}}>
     <div className="d-flex justify-content-center" >

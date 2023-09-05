@@ -24,7 +24,8 @@ const port = process.env.PORT || 3001;
 app.use('/api/users', require('./routes/api/users'));
 
 app.use('/api/pizzas',  require('./routes/api/pizzas'));
-// app.use('/api/orders',  require('./routes/api/orders'));
+
+app.use('/api/orders',  require('./routes/api/orders'));
 
 
 // The following "catch all" route (note the *) is necessary

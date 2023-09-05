@@ -1,7 +1,7 @@
 import React , {useState} from "react";
 import {Modal} from 'react-bootstrap';
 
-export default function Pizza({pizza, handleAddToOrder})
+export default function Pizza({pizza, handleAddToOrder, handleChangeQty, user})
  {
     const [quantity , setquantity]=useState(1)
     const [varient , setvarient ]=useState('small')
@@ -39,12 +39,14 @@ export default function Pizza({pizza, handleAddToOrder})
 <div className="flex-container">
     { <div className='m-1 w-100' >
     <h1>Price: ${pizza.prices[varient]*quantity}</h1>
-   
-
-
     </div> }
     <div className='m-1 w-100' >
-    <button className="btn" type="submit" onClick={() => handleAddToOrder(pizza)}>ADD TO CART</button> 
+    {user? (
+    <button className="btn" type="submit" onClick={() => handleAddToOrder(pizza._id, quantity, pizza.prices[varient]*1)}>ADD TO CART</button> 
+    ) : (
+        <a className="btn" href="/login">ADD TO CART</a> 
+   
+    )}
     </div>
 
 </div>
